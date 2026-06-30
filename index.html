@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licznik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <p id="TimerDaily"></p>
+        </div>
+        <div id="main">
+            <table>
+                <tr>
+                    <th>PN</th>
+                    <th>WT</th>
+                    <th>ŚR</th>
+                    <th>CZW</th>
+                    <th>PT</th>
+                    <th>SB</th>
+                    <th>NDZ</th>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                </tr>
+            </table>
+        </div>
+        <div id="footer">
+            <p>Autor: umarł z nudów</p>
+        </div>
+    </div>
+    <script>
+        function formatSeconds(totalSeconds) {
+            if (totalSeconds < 0) totalSeconds = 0;
+
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            const pad = (num) => String(num).padStart(2, '0');
+
+            return `Do końca zostało: ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+        }
+
+        function timer(){
+            let now = new Date();
+            
+            let targetToday = new Date();
+            targetToday.setHours(16, 0, 0, 0);
+
+            let TimerDaily = document.querySelector("#TimerDaily");
+
+            if (now >= targetToday) {
+                TimerDaily.innerText = "Udało ci się! Idź do domu";
+            } else {
+                let diffInSeconds = Math.floor((targetToday.getTime() - now.getTime()) / 1000);
+                TimerDaily.innerText = formatSeconds(diffInSeconds);
+            }
+        }
+
+        function highlightCurrentDay() {
+            let currentDay = new Date().getDate().toString();
+            let cells = document.querySelectorAll("table td");
+
+            cells.forEach(cell => {
+                if (cell.innerText.trim() === currentDay) {
+                    cell.classList.add("today");
+                }
+            });
+        }
+        highlightCurrentDay();
+        setInterval(highlightCurrentDay, 3600);
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+</html>
