@@ -57,6 +57,7 @@ if (isset($_POST["text"])) {
         </div>
         <div id="footer">
             <p>Autor: umarł z nudów</p>
+            <a href="index.html">powrót</a>
         </div>
     </div>
 </body>

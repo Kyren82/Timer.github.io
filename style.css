@@ -68,10 +68,11 @@ th {
 
 #footer {
     width: 100%;
-    min-height: 10vh;
+    min-height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #footer > p {
