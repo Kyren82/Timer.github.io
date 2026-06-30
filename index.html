@@ -23,38 +23,38 @@
                     <th>NDZ</th>
                 </tr>
                 <tr>
-                    <td>29</td>
-                    <td>30</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
+                    <td><a href="todo.php?day=29">29</a></td>
+                    <td><a href="todo.php?day=30">30</a></td>
+                    <td><a href="todo.php?day=1">1</a></td>
+                    <td><a href="todo.php?day=2">2</a></td>
+                    <td><a href="todo.php?day=3">3</a></td>
                     <td>4</td>
                     <td>5</td>
                 </tr>
                 <tr>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                    <td>10</td>
+                    <td><a href="todo.php?day=6">6</a></td>
+                    <td><a href="todo.php?day=7">7</a></td>
+                    <td><a href="todo.php?day=8">8</a></td>
+                    <td><a href="todo.php?day=9">9</a></td>
+                    <td><a href="todo.php?day=10">10</a></td>
                     <td>11</td>
                     <td>12</td>
                 </tr>
                 <tr>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                    <td>17</td>
+                    <td><a href="todo.php?day=13">13</a></td>
+                    <td><a href="todo.php?day=14">14</a></td>
+                    <td><a href="todo.php?day=15">15</a></td>
+                    <td><a href="todo.php?day=16">16</a></td>
+                    <td><a href="todo.php?day=17">17</a></td>
                     <td>18</td>
                     <td>19</td>
                 </tr>
                 <tr>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                    <td>23</td>
-                    <td>24</td>
+                    <td><a href="todo.php?day=20">20</a></td>
+                    <td><a href="todo.php?day=21">21</a></td>
+                    <td><a href="todo.php?day=22">22</a></td>
+                    <td><a href="todo.php?day=23">23</a></td>
+                    <td><a href="todo.php?day=24">24</a></td>
                     <td>25</td>
                     <td>26</td>
                 </tr>
@@ -100,11 +100,15 @@
             cells.forEach(cell => {
                 if (cell.innerText.trim() === currentDay) {
                     cell.classList.add("today");
+                    let link = cell.querySelector("a");
+                    if (link) {
+                        link.classList.add("today");
+                    }
                 }
             });
         }
         highlightCurrentDay();
-        setInterval(highlightCurrentDay, 3600);
+        setInterval(highlightCurrentDay, 3600000);
         timer();
         setInterval(timer, 1000);
     </script>
